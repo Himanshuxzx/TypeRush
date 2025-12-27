@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #1a1a2e;
+  --color-caret: #ff6b6b;
+  --color-main: #ff6b6b;
+  --color-sub: #f8f9fa;
+  --color-sub-alt: #0f0f23;
+  --color-text: #4ecdc4;
+  --color-error: #ff4757;
+  --color-error-extra: #ff3838;
+  --color-colorful-error: #ff4757;
+  --color-colorful-error-extra: #ff0019;
+}
+
+body {
+  @apply text-white font-sans antialiased;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overscroll-behavior: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .blinking-cursor {
+    border-left: 3px solid transparent;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  .blinking-cursor-right {
+    border-right: 3px solid transparent;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% {
+      border-left-color: #ff6b6b;
+      border-right-color: #ff6b6b;
+    }
+    25%, 75% {
+      border-left-color: transparent;
+      border-right-color: transparent;
+    }
+  }
+
+  .correct-char {
+    color: #4ecdc4;
+    text-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
+  }
+  .incorrect-char {
+    color: #ff4757;
+    text-shadow: 0 0 8px rgba(255, 71, 87, 0.5);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
